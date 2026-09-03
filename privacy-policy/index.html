@@ -1,0 +1,388 @@
+<!DOCTYPE html>
+<!-- Standalone CommuneWorld policy page. Renders the live text from the
+     content API, and ships a complete copy of the policy inline so the page
+     is never blank if that request fails. -->
+<html lang="en">
+<head>
+<meta charset="utf-8"/>
+<meta name="viewport" content="width=device-width, initial-scale=1"/>
+<title>Privacy Policy — CommuneWorld</title>
+<meta name="description" content="How CommuneWorld, operated by Kamna Creations Private Limited, collects, uses, shares and protects your personal data under the DPDP Act 2023."/>
+<link rel="canonical" href="https://www.communeworld.com/privacy-policy"/>
+<meta property="og:title" content="Privacy Policy — CommuneWorld"/>
+<meta property="og:description" content="How CommuneWorld, operated by Kamna Creations Private Limited, collects, uses, shares and protects your personal data under the DPDP Act 2023."/>
+<meta property="og:url" content="https://www.communeworld.com/privacy-policy"/>
+<meta property="og:site_name" content="CommuneWorld"/>
+<meta property="og:type" content="website"/>
+<meta property="og:locale" content="en_IN"/>
+<meta name="twitter:card" content="summary_large_image"/>
+<link rel="shortcut icon" href="https://www.communeworld.com/brand/communeworld-logo.jpg"/>
+<link rel="icon" href="https://www.communeworld.com/brand/communeworld-logo.jpg"/>
+<script type="application/ld+json">
+{
+  "@context": "https://schema.org",
+  "@type": "Organization",
+  "name": "CommuneWorld",
+  "legalName": "Kamna Creations Private Limited",
+  "url": "https://www.communeworld.com",
+  "email": "communeworld01@gmail.com",
+  "telephone": "+916377563773",
+  "address": {
+    "@type": "PostalAddress",
+    "streetAddress": "E4/459, Sector O, Sarojini Nagar, Mansarovar Yojna",
+    "addressLocality": "Lucknow",
+    "addressRegion": "Uttar Pradesh",
+    "postalCode": "226002",
+    "addressCountry": "IN"
+  }
+}
+</script>
+<style>
+    :root{
+      --ink:#071a33;--ink-soft:#29415b;--blue:#0759c7;--blue-deep:#0346a0;
+      --teal:#05bba7;--teal-deep:#008d82;--mint:#d9fbf5;--sky:#e8f4ff;
+      --paper:#fff;--cloud:#f5f9fc;--line:#dce8f0;
+      --radius-lg:32px;--radius-md:22px;--shadow-soft:0 24px 80px #0835621a;
+    }
+    *{box-sizing:border-box}
+    html{scroll-behavior:smooth;background:var(--paper)}
+    body{margin:0;background:var(--paper);color:var(--ink);
+      -webkit-font-smoothing:antialiased;text-rendering:optimizelegibility;
+      font-family:Avenir Next,Segoe UI,Arial,Helvetica,sans-serif}
+    a{color:inherit;text-decoration:none}
+    .kicker{color:var(--teal-deep);letter-spacing:.16em;text-transform:uppercase;font-size:11px;font-weight:800;margin:0}
+
+    /* ---- announcement + header (mirrors the home page) ---- */
+    .announcement{display:flex;align-items:center;justify-content:center;gap:9px;
+      min-height:36px;background:var(--ink);color:#cfe2f5;font-size:10px;
+      letter-spacing:.13em;text-transform:uppercase;font-weight:700}
+    .announcement-dot{width:6px;height:6px;border-radius:999px;background:var(--teal)}
+    .site-header{display:flex;align-items:center;justify-content:space-between;gap:24px;
+      width:min(100% - 48px,1400px);margin:0 auto;min-height:88px}
+    .brand-link{display:flex;flex-direction:column;gap:2px}
+    .brand-link strong{font-size:20px;letter-spacing:-.03em;font-weight:850}
+    .brand-link span{font-size:8px;letter-spacing:.12em;font-weight:800;color:var(--teal-deep)}
+    .nav-links{display:flex;gap:26px;font-size:13px;font-weight:700;color:var(--ink-soft)}
+    .nav-links a{transition:color .18s}
+    .nav-links a:hover{color:var(--teal-deep)}
+    .nav-links a[aria-current="page"]{color:var(--blue)}
+
+    /* ---- policy head ---- */
+    .policy{width:min(100% - 48px,1400px);margin:0 auto;padding:56px 0 24px;
+      display:grid;grid-template-columns:minmax(0,.9fr) minmax(0,1.6fr);gap:64px;align-items:start}
+    .policy-head{position:sticky;top:34px}
+    .policy-head h1{margin:14px 0 0;font-size:clamp(38px,4vw,52px);letter-spacing:-.035em;line-height:1.04}
+    .policy-meta{margin:16px 0 0;color:#7f91a2;font-size:12px;font-weight:700}
+    .policy-entity{margin-top:30px;padding:20px 22px;border-left:3px solid var(--teal);
+      background:#f5fafb;border-radius:0 var(--radius-md) var(--radius-md) 0}
+    .policy-entity .entity-label{display:block;color:#7f91a2;letter-spacing:.12em;
+      text-transform:uppercase;font-size:9px;font-weight:750}
+    .policy-entity strong{display:block;margin-top:6px;font-size:15px;letter-spacing:-.02em}
+    .policy-entity address{margin-top:9px;font-style:normal;font-size:12px;line-height:1.8;color:#536a80}
+    .policy-entity .entity-contact{display:flex;flex-direction:column;gap:5px;margin-top:12px;
+      font-size:12px;font-weight:750;color:var(--blue-deep)}
+    .policy-entity .entity-contact a:hover{color:var(--teal-deep);text-decoration:underline}
+    .policy-nav{display:flex;flex-wrap:wrap;gap:10px;margin-top:26px}
+    .policy-nav a{display:inline-flex;align-items:center;min-height:40px;padding:0 17px;
+      border-radius:999px;border:1px solid var(--line);font-size:12px;font-weight:750;
+      color:var(--ink-soft);transition:border-color .18s,color .18s,background .18s}
+    .policy-nav a:hover{border-color:var(--teal);color:var(--teal-deep);background:var(--mint)}
+
+    /* ---- rendered policy body ---- */
+    .policy-content{max-width:760px;color:#3d5670;font-size:15px;line-height:1.85}
+    .policy-content h2{margin:44px 0 0;font-size:26px;letter-spacing:-.025em;color:var(--ink);line-height:1.2}
+    .policy-content h3{margin:44px 0 0;font-size:19px;letter-spacing:-.02em;color:var(--ink);line-height:1.3}
+    .policy-content h3:first-child,.policy-content h2:first-child{margin-top:0}
+    .policy-content p{margin:15px 0 0}
+    .policy-content ul,.policy-content ol{margin:15px 0 0;padding-left:20px}
+    .policy-content li{margin-top:7px}
+    .policy-content li>p{margin:0}
+    .policy-content strong{color:var(--ink);font-weight:800}
+    .policy-content a{color:var(--blue);font-weight:700;text-decoration:underline;text-underline-offset:2px}
+    .policy-content a:hover{color:var(--teal-deep)}
+    .policy-content table{width:100%;margin-top:22px;border-collapse:collapse;font-size:13px;
+      border:1px solid var(--line);border-radius:var(--radius-md);overflow:hidden}
+    .policy-content th{background:var(--cloud);color:var(--ink);text-align:left;font-weight:800;
+      font-size:10px;letter-spacing:.1em;text-transform:uppercase}
+    .policy-content th,.policy-content td{padding:13px 15px;border-bottom:1px solid var(--line);vertical-align:top}
+    .policy-content tr:last-child td{border-bottom:0}
+    .policy-content td p,.policy-content th p{margin:0}
+    .table-scroll{overflow-x:auto}
+
+    /* ---- registered business panel + footer ---- */
+    .legal-strip{width:min(100% - 48px,1400px);margin:56px auto 26px;padding:32px 36px 34px;
+      background:var(--cloud);border:1px solid var(--line);border-radius:var(--radius-lg)}
+    .legal-strip>.kicker{margin-bottom:20px}
+    .legal-grid{display:grid;grid-template-columns:1.1fr 1.45fr .95fr;align-items:start}
+    .legal-item{display:flex;flex-direction:column;gap:10px;min-width:0;padding-right:36px}
+    .legal-item+.legal-item{border-left:1px solid var(--line);padding-left:36px}
+    .legal-item:last-child{padding-right:0}
+    .legal-label{color:#7f91a2;letter-spacing:.11em;text-transform:uppercase;font-size:9px;font-weight:800}
+    .legal-item strong{color:var(--ink);font-size:19px;letter-spacing:-.025em;font-weight:850;line-height:1.25}
+    .legal-item address{max-width:400px;font-style:normal;font-size:13.5px;line-height:1.7;color:var(--ink-soft)}
+    .legal-item a{width:fit-content;color:var(--blue-deep);font-size:14px;font-weight:750;transition:color .18s}
+    .legal-item a:hover{color:var(--teal-deep);text-decoration:underline;text-underline-offset:3px}
+    footer{display:grid;grid-template-columns:1fr auto 1fr;align-items:center;gap:24px;
+      width:min(100% - 48px,1400px);margin:0 auto;min-height:118px;font-size:10px;color:#73869a}
+    .footer-brand{display:flex;flex-direction:column;gap:3px}
+    .footer-brand strong{color:var(--ink);font-size:18px;letter-spacing:-.03em}
+    .footer-brand span{color:var(--teal-deep);font-size:8px;letter-spacing:.12em;font-weight:800}
+    .footer-links{display:flex;flex-wrap:wrap;justify-content:flex-end;gap:22px;font-weight:700}
+    .footer-links a{transition:color .18s}
+    .footer-links a:hover{color:var(--teal-deep)}
+
+    @media (width<=960px){
+      .policy{grid-template-columns:1fr;gap:40px;padding-top:44px}
+      .policy-head{position:static}
+      .legal-grid{grid-template-columns:1fr 1fr;gap:26px 34px}
+      .legal-item{padding-right:0}
+      .legal-item+.legal-item{border-left:0;padding-left:0}
+      footer{grid-template-columns:1fr auto}
+      footer>p{grid-area:2/1/auto/-1;text-align:left;padding-bottom:24px}
+    }
+    @media (width<=700px){
+      .site-header,.policy,.legal-strip,footer{width:min(100% - 28px,1400px)}
+      .announcement{min-height:32px;font-size:9px}
+      .legal-strip{margin:38px auto 22px;padding:26px 22px 28px;border-radius:var(--radius-md)}
+      .legal-grid{grid-template-columns:1fr;gap:22px}
+      .policy-content{font-size:14px}
+      footer{display:flex;flex-direction:column;align-items:flex-start;justify-content:center;
+        gap:18px;min-height:170px}
+      footer>p{order:3;padding:0 0 25px}
+      .footer-links{justify-content:flex-start}
+    }
+    @media (prefers-reduced-motion:reduce){
+      html{scroll-behavior:auto}
+      *,:before,:after{transition-duration:.01ms!important}
+    }
+</style>
+</head>
+<body data-slug="privacy-policy">
+<div class="announcement"><span class="announcement-dot"></span>India-first. Trust-first. Built for meaningful connection.</div>
+<header class="site-header">
+  <a class="brand-link" href="/" aria-label="CommuneWorld home"><strong>CommuneWorld</strong><span>CONNECT • GROW • EARN</span></a>
+  <nav class="nav-links" aria-label="Primary navigation">
+    <a href="/">Home</a>
+    <a href="/privacy-policy" aria-current="page">Privacy policy</a>
+    <a href="/child-safety-policy">Child safety</a>
+  </nav>
+</header>
+<main class="policy">
+  <div class="policy-head">
+    <p class="kicker">LEGAL</p>
+    <h1>Privacy Policy</h1>
+    <p class="policy-meta">Last updated <time id="policy-updated" datetime="2026-09-01T12:46:45.138Z">1 September 2026</time></p>
+    <div class="policy-entity">
+      <span class="entity-label">Operated by</span>
+      <strong>Kamna Creations Private Limited</strong>
+      <address>E4/459, Sector O, Sarojini Nagar, Mansarovar Yojna, Lucknow, Uttar Pradesh 226002, India</address>
+      <div class="entity-contact">
+        <a href="mailto:communeworld01@gmail.com">communeworld01@gmail.com</a>
+        <a href="tel:+916377563773">+91 63775 63773</a>
+      </div>
+    </div>
+    <div class="policy-nav">
+      <a href="/">Back to CommuneWorld</a>
+      <a href="/child-safety-policy">Child Safety Policy</a>
+    </div>
+  </div>
+  <article class="policy-content" id="policy-content">
+<h2>Privacy Policy</h2><p><strong>Last updated: 1 September 2026</strong></p><p>CommuneWorld is operated by Kamna Creations Private Limited, E4/459, Sector O, Sarojini Nagar, Mansarovar Yojna, Lucknow, Uttar Pradesh 226002, India. For the purposes of the Digital Personal Data Protection Act, 2023, we are the Data Fiduciary for the personal data described below.</p><p><strong>CommuneWorld is an 18+ platform.</strong> It is not directed at and must not be used by anyone under 18. See our <a href="/child-safety-policy">Child Safety Policy</a>.</p><h3>1. What we collect</h3><p><strong>Account and identity.</strong> Your name, email address, phone number, gender where you provide it, and your member category. If you set a password it is stored only as a bcrypt hash; we authenticate primarily by phone OTP.</p><p><strong>Profile.</strong> Photographs, bio, personality and lifestyle attributes, relationship status, interests, and the relationship intents you select.</p><p><strong>Identity verification (KYC).</strong> Aadhaar number, PAN, name as per PAN, date of birth, images of your Aadhaar and PAN cards, and a KYC selfie. Depending on your member category we also collect work email, employer, position, company ID, declared income and supporting proof such as a salary slip, bank statement or ITR; business documents such as GST declaration, visiting card and cancelled cheque; or student documents such as a student ID, degree certificate, institute and course.</p><p><strong>Aadhaar verification records.</strong> A salted cryptographic hash of the Aadhaar number you enter, the last four digits returned by UIDAI, and the name, date of birth, gender, address and photograph UIDAI holds for you.</p><p><strong>Face data.</strong> A liveness image captured during registration, a confidence score, and the pass or fail result.</p><p><strong>Financial.</strong> Payment amounts, GST, order and payment references, your credits balance and every movement against it, your GST invoices, and — only if you withdraw earnings — your bank or UPI details.</p><p><strong>Communications and content.</strong> Messages and their delivery and read status, posts, comments, reactions, stories and who viewed them, broadcasts, consultations, calendar events, connections, blocks, and support tickets.</p><p><strong>Device and technical.</strong> Your platform, push notification token, session records, and <strong>your IP address</strong>, recorded against sessions and activity log entries.</p><p><strong>Safety.</strong> Automated moderation scan results, moderation decisions, and a snapshot of any content that caused an action against your account.</p><h3>2. What we do not collect</h3><ul><li><p>We do not collect your contact list or address book.</p></li><li><p>We do not collect your precise GPS location or track your movements.</p></li><li><p>We never receive your card number, CVV, UPI PIN or net-banking credentials — those go directly to the payment provider.</p></li><li><p>We do not sell your personal data, and we do not use it to train AI models.</p></li><li><p>We do not use third-party advertising or cross-site tracking cookies.</p></li></ul><h3>3. Aadhaar</h3><p>You verify your Aadhaar yourself through DigiLocker, using your own Aadhaar OTP. We never see your OTP or your DigiLocker password. UIDAI returns your Aadhaar number to us only in masked form — the last four digits. We bind your verification to the number you typed using a salted hash mixed with a server-side secret, which cannot be reversed. Your Aadhaar number is used only to verify your identity on CommuneWorld, is never shown to other members, and is never shared with advertisers or data brokers. Once we have retrieved your record we revoke our DigiLocker access.</p><h3>4. Face and biometric data</h3><p>We run a face liveness check using Amazon Rekognition to confirm a real, present person is registering, and we match that image against your identity document and your UIDAI photograph. This is sensitive personal data under the SPDI Rules. We use it only for identity verification and fraud prevention — never for advertising or profiling — and we do not operate any feature that identifies a person from a photograph.</p><h3>5. How we use your data</h3><ul><li><p>To create and run your account, and to show you to other members</p></li><li><p>To verify your identity and confirm you are 18 or over</p></li><li><p>To deliver messages, calls and consultations</p></li><li><p>To take payments, issue GST invoices and pay out your earnings</p></li><li><p>To keep the platform safe, and to detect and prevent fraud</p></li><li><p>To send you notifications and respond to your support requests</p></li><li><p>To meet our legal obligations and respond to lawful requests from authorities</p></li></ul><p>Where automated moderation flags your content, a CommuneWorld administrator reviews the decision before any lasting action is taken against your account.</p><h3>6. Automated scanning</h3><p>All images and video uploaded to CommuneWorld are scanned automatically for prohibited content using Amazon Rekognition. Documents you upload for KYC are read using Amazon Textract to check them against the details you typed. This scanning is mandatory and central to how we detect child sexual abuse material.</p><h3>7. Who we share it with</h3><p>We share data with service providers who process it on our instructions: Amazon Web Services (media storage, face liveness, content moderation, document reading), Setu and DigiLocker/UIDAI (Aadhaar verification), Razorpay and Cashfree (payments and payouts), MSG91 (SMS and OTP), Twilio (consultation calls), Google Firebase (push notifications), and our email provider.</p><p>Other members see your profile, your content and the messages you send them. They do <strong>not</strong> see your Aadhaar or PAN, your KYC documents, your date of birth, your bank details, your IP address, or your liveness images.</p><p>We disclose data to law enforcement where required by law. We report child sexual abuse material to the authorities without requiring a legal request and without notice to the account holder.</p><h3>8. How long we keep it</h3><p>We keep your data while your account is active. Financial and GST records are retained as long as tax law requires and cannot be deleted on request. Moderation evidence is retained because it supports a decision that may be appealed. Child safety reports and their evidence are never deleted on request. Clearing a chat hides messages from your view only — it does not delete them, and it does not remove a reported message from moderation review.</p><h3>9. Your rights</h3><p>Under the DPDP Act you may access a summary of your data, correct or complete it, request erasure, withdraw consent, nominate someone to act for you, and raise a grievance. Corrections to verified KYC data require re-verification. Withdrawing consent to identity verification ends your access to the platform, because a verified identity is what the platform is built on.</p><p>To exercise a right, write to communeworld01@gmail.com from your registered email address or raise a support ticket. We respond within thirty days, and may ask you to verify your identity first.</p><h3>10. Security</h3><p>Traffic is encrypted with HTTPS/TLS. Passwords are stored only as bcrypt hashes. Access to KYC data is restricted to authorised administrators and their actions are logged. Media is held in access-controlled storage and served through time-limited links. Sensitive verification payloads are deliberately kept out of our error logs.</p><p>CommuneWorld staff will <strong>never</strong> ask you for your OTP or your password.</p><h3>11. Children</h3><p>CommuneWorld is strictly for adults aged 18 and over, and we do not knowingly collect data from anyone under 18. If you believe a minor has an account, report it in the app or to communeworld01@gmail.com and we will investigate and remove it. See our <a href="/child-safety-policy">Child Safety Policy</a> for our full approach.</p><h3>12. Grievance redressal</h3><p><strong>Grievance Officer:</strong> Kamana Kumari, communeworld01@gmail.com, +916377563773<br /><strong>Data protection contact:</strong> Kamana Kumari, communeworld01@gmail.com<br />Kamna Creations Private Limited, E4/459, Sector O, Sarojini Nagar, Mansarovar Yojna, Lucknow, Uttar Pradesh 226002</p><p>We acknowledge grievances within 24 hours and resolve them within 15 days, as required by the IT Rules 2021. If you are not satisfied you may approach the Data Protection Board of India.</p><h3>13. Changes</h3><p>We may update this policy. Where a change materially affects how we use your data we will notify you before it takes effect. The last-updated date above always reflects the current version.</p>
+  </article>
+</main>
+<section class="legal-strip" id="legal" aria-label="Registered business details">
+  <p class="kicker">Registered business</p>
+  <div class="legal-grid">
+    <div class="legal-item">
+      <span class="legal-label">Legal entity</span>
+      <strong>Kamna Creations Private Limited</strong>
+    </div>
+    <div class="legal-item">
+      <span class="legal-label">Registered address</span>
+      <address>E4/459, Sector O, Sarojini Nagar, Mansarovar Yojna, Lucknow, Uttar Pradesh 226002, India</address>
+    </div>
+    <div class="legal-item">
+      <span class="legal-label">Contact</span>
+      <a href="mailto:communeworld01@gmail.com">communeworld01@gmail.com</a>
+      <a href="tel:+916377563773">+91 63775 63773</a>
+    </div>
+  </div>
+</section>
+<footer>
+  <div class="footer-brand"><strong>CommuneWorld</strong><span>CONNECT • GROW • EARN</span></div>
+  <p>© 2026 Kamna Creations Private Limited. All rights reserved.</p>
+  <div class="footer-links">
+    <a href="/">Home</a>
+    <a href="/privacy-policy">Privacy policy</a>
+    <a href="/child-safety-policy">Child safety</a>
+    <a href="mailto:communeworld01@gmail.com">Grievance</a>
+  </div>
+</footer>
+<script>
+/* Fetches the live policy text from the CommuneWorld content API and renders it.
+   The page already ships a complete copy of the policy in the markup below, so if
+   the API is unreachable the visitor (or an app-store / payment-gateway reviewer)
+   still sees the full policy. The fetch only ever replaces good content with newer
+   good content -- it never blanks the page. */
+(function () {
+  var API_BASE = 'https://api.communeworld.com/api/content-pages/';
+  var CONTACT_EMAIL = 'communeworld01@gmail.com';
+
+  var body = document.body;
+  var slug = body.getAttribute('data-slug');
+  var target = document.getElementById('policy-content');
+  var stamp = document.getElementById('policy-updated');
+  var heading = document.querySelector('.policy-head h1');
+  var pageTitle = heading ? heading.textContent.trim().toLowerCase() : '';
+
+  /* Tags and attributes we are willing to render. Anything else is dropped, so a
+     compromised or mistyped CMS entry cannot inject script into this page. */
+  var ALLOWED_TAGS = ('h1 h2 h3 h4 h5 h6 p div span section article ul ol li dl dt dd ' +
+    'strong b em i u s small sub sup br hr a blockquote code pre figure figcaption ' +
+    'table thead tbody tfoot tr th td caption colgroup col img').toUpperCase().split(' ');
+  var ALLOWED_ATTRS = ['href', 'title', 'alt', 'src', 'colspan', 'rowspan', 'span', 'datetime'];
+
+  function sanitize(root) {
+    var nodes = Array.prototype.slice.call(root.querySelectorAll('*'));
+    nodes.forEach(function (el) {
+      if (ALLOWED_TAGS.indexOf(el.tagName) === -1) {
+        if (el.parentNode) el.parentNode.removeChild(el);
+        return;
+      }
+      Array.prototype.slice.call(el.attributes).forEach(function (attr) {
+        var name = attr.name.toLowerCase();
+        var value = (attr.value || '').trim();
+        var unsafeUrl = (name === 'href' || name === 'src') && /^(javascript|data|vbscript):/i.test(value);
+        if (ALLOWED_ATTRS.indexOf(name) === -1 || unsafeUrl) el.removeAttribute(attr.name);
+      });
+      if (el.tagName === 'A' && el.getAttribute('href')) {
+        var href = el.getAttribute('href');
+        if (/^https?:/i.test(href)) {
+          el.setAttribute('target', '_blank');
+          el.setAttribute('rel', 'noopener noreferrer');
+        }
+      }
+    });
+    return root;
+  }
+
+  function textNodes(root) {
+    var walker = document.createTreeWalker(root, NodeFilter.SHOW_TEXT, null, false);
+    var out = [], node;
+    while ((node = walker.nextNode())) out.push(node);
+    return out;
+  }
+
+  /* The stored copy still carries editorial placeholders such as [CSAE EMAIL].
+     Publishing those verbatim would defeat the purpose of the page, so they are
+     resolved to the published contact address at render time. Remove this once
+     the placeholders are fixed in the CMS. */
+  function resolvePlaceholders(root) {
+    textNodes(root).forEach(function (node) {
+      if (node.nodeValue.indexOf('[') === -1) return;
+      node.nodeValue = node.nodeValue
+        .replace(/\[\s*(?:DPO|GRIEVANCE|CSAE|SUPPORT|CONTACT)\s+EMAIL\s*\]/gi, CONTACT_EMAIL);
+    });
+  }
+
+  /* Turns bare email addresses and the published phone number into real links. */
+  function linkify(root) {
+    var pattern = /([A-Za-z0-9._%+-]+@[A-Za-z0-9.-]+\.[A-Za-z]{2,})|(\+91[\s-]?\d{5}[\s-]?\d{5})/g;
+    textNodes(root).forEach(function (node) {
+      var parent = node.parentNode;
+      if (!parent || (parent.closest && parent.closest('a'))) return;
+      var text = node.nodeValue;
+      pattern.lastIndex = 0;
+      if (!pattern.test(text)) return;
+
+      pattern.lastIndex = 0;
+      var frag = document.createDocumentFragment();
+      var last = 0, match;
+      while ((match = pattern.exec(text))) {
+        if (match.index > last) frag.appendChild(document.createTextNode(text.slice(last, match.index)));
+        var link = document.createElement('a');
+        link.textContent = match[0];
+        link.setAttribute('href', match[1] ? 'mailto:' + match[1] : 'tel:' + match[0].replace(/[\s-]/g, ''));
+        frag.appendChild(link);
+        last = match.index + match[0].length;
+      }
+      if (last < text.length) frag.appendChild(document.createTextNode(text.slice(last)));
+      parent.replaceChild(frag, node);
+    });
+  }
+
+  /* The stored content repeats the policy title and its own "Last updated" line.
+     Both are already rendered in the page header, so drop the duplicates. */
+  function dropDuplicateLede(root) {
+    var first = root.firstElementChild;
+    if (first && /^H[1-3]$/.test(first.tagName) &&
+        first.textContent.trim().toLowerCase().indexOf(pageTitle) === 0) {
+      root.removeChild(first);
+    }
+    var next = root.firstElementChild;
+    if (next && next.tagName === 'P' && /last\s+updated/i.test(next.textContent)) {
+      root.removeChild(next);
+    }
+  }
+
+  /* Wide tables must scroll inside their own box rather than the page. */
+  function wrapTables(root) {
+    Array.prototype.slice.call(root.querySelectorAll('table')).forEach(function (table) {
+      if (table.parentNode && table.parentNode.classList.contains('table-scroll')) return;
+      var box = document.createElement('div');
+      box.className = 'table-scroll';
+      table.parentNode.insertBefore(box, table);
+      box.appendChild(table);
+    });
+  }
+
+  function polish(root) {
+    dropDuplicateLede(root);
+    resolvePlaceholders(root);
+    linkify(root);
+    wrapTables(root);
+  }
+
+  function setUpdated(iso) {
+    if (!stamp || !iso) return;
+    var date = new Date(iso);
+    if (isNaN(date.getTime())) return;
+    stamp.textContent = date.toLocaleDateString('en-GB', { day: 'numeric', month: 'long', year: 'numeric' });
+    stamp.setAttribute('datetime', iso);
+  }
+
+  /* Clean up the copy that shipped with the page, so it reads identically to the
+     live one even when the request below never completes. */
+  if (target) polish(target);
+
+  if (!target || !slug || typeof fetch !== 'function') return;
+
+  fetch(API_BASE + slug, { headers: { Accept: 'application/json' }, credentials: 'omit' })
+    .then(function (response) {
+      if (!response.ok) throw new Error('HTTP ' + response.status);
+      return response.json();
+    })
+    .then(function (payload) {
+      var data = payload && payload.data;
+      if (!data || typeof data.content !== 'string' || data.content.trim().length < 200) {
+        throw new Error('empty content');
+      }
+      var parsed = new DOMParser().parseFromString('<div>' + data.content + '</div>', 'text/html');
+      var incoming = parsed.body.firstElementChild;
+      sanitize(incoming);
+      polish(incoming);
+      if (!incoming.textContent.trim()) throw new Error('nothing left to render');
+
+      target.textContent = '';
+      while (incoming.firstChild) target.appendChild(document.adoptNode(incoming.firstChild));
+      setUpdated(data.updated_at);
+      body.setAttribute('data-source', 'live');
+    })
+    .catch(function () {
+      /* Keep the copy that shipped with the page. */
+      body.setAttribute('data-source', 'builtin');
+    });
+})();
+</script>
+</body>
+</html>
