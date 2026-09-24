@@ -16,9 +16,12 @@ communeworld01@gmail.com, +91 63775 63773).
 index.html                       home page, serves /, minified, ~1.6 MB
 privacy-policy/index.html        serves /privacy-policy
 child-safety-policy/index.html   serves /child-safety-policy
+payments/index.html, payment.js  serves /payments -- Cashfree checkout page opened by the mobile app
 vercel.json                      routing, redirects and security headers
-.vercelignore                    keeps tools/ and CLAUDE.md out of the deployment
+.vercelignore                    keeps tools/, docs/ and CLAUDE.md out of the deployment
 tools/policy-page/               sources the two policy pages are built from
+tools/payment-page/              sources the payment page is built from
+docs/                            integration specs handed over by the app/backend team
 ```
 
 Routing is entirely filesystem-based — there is no router, no rewrite rules and no server-side config.
@@ -144,11 +147,45 @@ When the CMS text changes materially, refresh the fallback copies from `.data.co
 from the live text. They deliberately differ from the API in two ways: placeholders are already resolved,
 and cross-links between the two policies are real `<a>` tags (the API text has them as plain words).
 
+## The payment page -- `/payments`
+
+Spec: `docs/cashfree_integration.md`. The mobile app opens `/payments?token=<64 lowercase hex>` **inside a
+webview**; nobody reaches it by browsing. The page owns exactly two steps: `POST
+{API}/api/payment/cashfree/create-order { checkout_token }` (no auth header), then
+`Cashfree({ mode }).checkout({ paymentSessionId, redirectTarget: '_self' })`. It never decides whether a
+payment succeeded -- Cashfree redirects to the API's return URL, the app intercepts that and verifies.
+
+- **The token is a one-time payment credential.** `payment.js` never logs, stores or forwards it; the page
+  sends `Referrer-Policy: no-referrer` and `Cache-Control: no-store`. Keep third-party scripts other than
+  Cashfree's SDK off this page.
+- **Idempotent by design.** create-order returns the same order for the same token, so the page calls it on
+  every load and "Try again" simply calls it again.
+- **Error states follow §5 of the spec**, and the server's `message` is shown verbatim (via `textContent`)
+  except for 5xx/network, which get the generic line. 409 (already paid) must never open checkout.
+- **Webview rules:** no `window.open`, `target="_blank"` or popups; no reliance on cookies/storage; no
+  site navigation links (they would lead the user out of the payment flow).
+- The Cashfree SDK is injected by `payment.js`, not a static tag, so a failed load is retried on the next
+  tap. `amount` is in rupees with GST included -- never multiply by 100.
+
+### Rebuilding it
+
+Edit `tools/payment-page/` (`payment.html`, `payment.css`, `payment.js`), never `payments/`:
+
+```bash
+bash tools/payment-page/build-page.sh                          # production (default)
+CASHFREE_MODE=sandbox bash tools/payment-page/build-page.sh    # sandbox build
+```
+
+`CASHFREE_MODE` **must match the backend's Cashfree environment** -- a sandbox session will not open in
+production mode, or vice versa. It is baked into `<body data-cashfree-mode>`. `PAYMENT_API_BASE` defaults to
+`https://api.communeworld.com`; the build refuses an origin the `/payments` CSP does not allow. The build is
+deterministic. `payment.js` is served as a file from `'self'` rather than inlined, so its CSP needs no hash.
+
 ## Deployment (Vercel)
 
 Static hosting, no build step. `vercel.json` sets `framework: null` and serves the repo root, so Vercel's
-zero-config static detection does the work; `.vercelignore` keeps `tools/` and `CLAUDE.md` out of the
-deployment.
+zero-config static detection does the work; `.vercelignore` keeps `tools/`, `docs/` and `CLAUDE.md` out of
+the deployment.
 
 ```bash
 vercel            # preview deployment
@@ -176,6 +213,17 @@ every page inlines its stylesheet. There are no forms, iframes, objects or inlin
 analytics script, an image host — means widening the CSP in the same commit, or it will be blocked in
 production with no visible error.
 
+**`/payments` has its own header block.** The catch-all rule's source is `/((?!payments(?:/|$)).*)` and a
+second rule matches `/payments/:path*`, so exactly one set of headers applies to any path -- never rely on
+Vercel merging two matching rules. The payments CSP differs from the site CSP in what Cashfree needs:
+`script-src https://sdk.cashfree.com`; `form-action https://*.cashfree.com` (`checkout()` with `'_self'`
+POSTs a hidden form to `{api|sandbox}.cashfree.com/pg/view/sessions/checkout` -- `form-action 'none'`
+would silently block payment); `frame-src https://*.cashfree.com` (the SDK loads a `ping_atom.html`
+iframe on init); and `connect-src`/`img-src` also allow `*.cashfree.com`. It also sends
+`Referrer-Policy: no-referrer`, `Cache-Control: no-store` and `X-Robots-Tag: noindex`. The policy build's
+hash sync rewrites the *first* `sha256-` in `vercel.json` -- keep the catch-all block first, and keep hashes
+out of the payments block.
+
 `Cache-Control: public, max-age=0, must-revalidate` is deliberate. These are compliance pages; a corrected
 legal name or policy must not sit in a CDN cache. Revalidation still 304s, so the 1.6 MB home page is not
 re-sent.
@@ -186,13 +234,20 @@ There is no build, test, or lint step for the home page. Serve the directory and
 
 ```bash
 python -m http.server 8777 --bind 127.0.0.1
-# http://127.0.0.1:8777/  /privacy-policy/  /child-safety-policy/
+# http://127.0.0.1:8777/  /privacy-policy/  /child-safety-policy/  /payments/?token=<64 hex>
 ```
 
 The policy pages have a jsdom harness that exercises the render pipeline against the live API response, a
 failed request, and hostile markup. It is not checked in — recreate it when touching `policy.js`, and cover
 at minimum: live render, fallback render, no visible `[PLACEHOLDER]`, no duplicated title, and that an
 injected `<script>` / `onerror` / `javascript:` href cannot execute.
+
+The payment page needs the same treatment when `payment.js` changes: stub `fetch` and `window.Cashfree`
+in jsdom and cover a missing/malformed token (no request made), 201 for both purposes, every §5 status,
+network failure, a non-JSON 5xx, a hostile `message` rendered as text, `checkout()` returning `{ error }`,
+an SDK load failure, and that 409 never opens checkout. To test the CSP, serve `payments/` with the
+`/payments` headers from `vercel.json` and drive the real SDK in headless Chrome through `checkout()`:
+it must POST to `cashfree.com/pg/view/sessions/checkout` with no `securitypolicyviolation` events.
 
 Verify visual changes at each breakpoint (1180 / 960 / 700 / 430 px). On the home page the hero phone
 mockups, the horizontally scrolling `.screen-gallery` and `.intent-list`, and the footer all restructure

@@ -1,5 +1,6 @@
 # Build sources and repo docs — not part of the deployed site.
 tools/
+docs/
 CLAUDE.md
 
 node_modules/
