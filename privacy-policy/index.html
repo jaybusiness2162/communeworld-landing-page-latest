@@ -130,6 +130,9 @@
     .footer-links{display:flex;flex-wrap:wrap;justify-content:flex-end;gap:22px;font-weight:700}
     .footer-links a{transition:color .18s}
     .footer-links a:hover{color:var(--teal-deep)}
+    footer>.footer-credit{grid-area:auto/1/auto/-1;order:4;margin:-12px 0 0;padding-bottom:24px;text-align:center}
+    .footer-credit a{font-weight:700;transition:color .18s}
+    .footer-credit a:hover{color:var(--teal-deep)}
 
     @media (width<=960px){
       .policy{grid-template-columns:1fr;gap:40px;padding-top:44px}
@@ -138,7 +141,8 @@
       .legal-item{padding-right:0}
       .legal-item+.legal-item{border-left:0;padding-left:0}
       footer{grid-template-columns:1fr auto}
-      footer>p{grid-area:2/1/auto/-1;text-align:left;padding-bottom:24px}
+      footer>p{grid-area:2/1/auto/-1;text-align:left}
+      footer>.footer-credit{grid-area:auto/1/auto/-1;text-align:left}
     }
     @media (width<=700px){
       .site-header,.policy,.legal-strip,footer{width:min(100% - 28px,1400px)}
@@ -148,7 +152,7 @@
       .policy-content{font-size:14px}
       footer{display:flex;flex-direction:column;align-items:flex-start;justify-content:center;
         gap:18px;min-height:170px}
-      footer>p{order:3;padding:0 0 25px}
+      footer>p{order:3;padding:0}
       .footer-links{justify-content:flex-start}
     }
     @media (prefers-reduced-motion:reduce){
@@ -217,6 +221,7 @@
     <a href="/child-safety-policy">Child safety</a>
     <a href="mailto:communeworld01@gmail.com">Grievance</a>
   </div>
+  <p class="footer-credit">Developed by <a href="https://kodeversesolutions.com/" target="_blank" rel="noopener">Kodeverse Solutions</a></p>
 </footer>
 <script>
 /* Fetches the live policy text from the CommuneWorld content API and renders it.

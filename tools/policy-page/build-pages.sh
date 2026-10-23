@@ -134,6 +134,7 @@ build () {
     printf '%s\n' '    <a href="/child-safety-policy">Child safety</a>'
     printf '    <a href="mailto:%s">Grievance</a>\n' "$ENTITY_MAIL"
     printf '%s\n' '  </div>'
+    printf '%s\n' '  <p class="footer-credit">Developed by <a href="https://kodeversesolutions.com/" target="_blank" rel="noopener">Kodeverse Solutions</a></p>'
     printf '%s\n' '</footer>'
 
     printf '%s\n' '<script>'
